@@ -92,6 +92,11 @@
   // ============================================================
 
   let apply(body) = {
+    show figure.caption: it => {
+      set text(size: 10pt, weight: "regular")
+      show regex("Figure [0-9]+"): set text(weight: "bold")
+      it
+    }
     set text(
       font: "Arial",
       size: 12pt,
@@ -101,13 +106,22 @@
       justify: false,
     )
 
-    show heading: it => {
+    show heading.where(level: 1): it => {
       set text(
         font: "Arial",
         size: 12pt,
         weight: "bold",
       )
       upper(it)
+    }
+
+    show heading.where(level: 2): it => {
+      set text(
+        font: "Arial",
+        size: 12pt,
+        weight: "bold",
+      )
+      it
     }
 
     let label-width = 1em
